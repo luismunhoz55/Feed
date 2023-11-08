@@ -11,3 +11,26 @@ Content-Type: application/json
   "title": "vadia",
   "message": "hahahahahararararar"
 }
+
+###
+
+# @name create_user
+POST http://localhost:3333/user/register
+Content-Type: application/json
+
+{
+  "name": "Willyam burron",
+  "email": "willy@gmail.com",
+  "password": "123"
+}
+
+###
+
+# @name user_login
+POST http://localhost:3333/user/login
+Content-Type: application/json
+
+{
+  "email": "luis@gmail.com",
+  "password": "123"
+}
