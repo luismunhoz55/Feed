@@ -1,16 +1,26 @@
 import fastify from "fastify";
 import cors from "@fastify/cors";
-import { messagesRoutes } from "./routes";
+import jwt from "@fastify/jwt";
 import { userRoutes } from "./routes/user";
+import { messagesRoutes } from "./routes/messages";
 
 const app = fastify();
 
-app.register(cors, {
-  origin: true, // todas as URLs de frontend poderão acessar nossas rotas backend
+// Register JWT Authorization
+app.register(jwt, {
+  secret: "fdshjiAIK3489SOHkjbsadf",
 });
-app.register(messagesRoutes);
-app.register(userRoutes);
 
+// Register CORS, so frontend can access backend routes
+app.register(cors, {
+  origin: true,
+});
+
+// Register all routes
+app.register(userRoutes);
+app.register(messagesRoutes);
+
+// Configure fastify
 app
   .listen({
     port: 3333,

@@ -12,6 +12,8 @@ export function CreateMessage() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
+    console.log("Criando mensagem");
+
     const formData = new FormData(e.target as HTMLFormElement);
 
     const title = formData.get("title");
