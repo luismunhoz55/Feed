@@ -1,12 +1,12 @@
 # @name get_messages
 GET http://localhost:3333/messages
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5MDBkZTNlLWVjMjgtNDE0OC05Y2MzLTc5MDhmNmRmMjc3YiIsIm5hbWUiOiJsdWlzIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTY5OTUzOTM1NiwiZXhwIjoxNzAyMTMxMzU2fQ.0lCa3L1QsCG40ISkL61OyaOvR2ZuLFjUsWVbCan1-KE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzYzIxNTFiLTRkNjgtNGIwNS04MzcxLWEzYzUxYjgzOTRjNiIsIm5hbWUiOiJMdWlzIEZlcm5hbmRvIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTY5OTU1ODk1N30.SV_aCeKT1Ve4E5UAvnzjpHgnjvVfESjX12-Ts6khoG4
 
 ###
 
 # @name create_message
 POST http://localhost:3333/messages
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5MDBkZTNlLWVjMjgtNDE0OC05Y2MzLTc5MDhmNmRmMjc3YiIsIm5hbWUiOiJsdWlzIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTY5OTUzOTU3OSwiZXhwIjoxNzAyMTMxNTc5fQ.SMh2Ll_Q_wVECJymR2Oihe-r1aiRZW_EOdSMEUnHElY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzYzIxNTFiLTRkNjgtNGIwNS04MzcxLWEzYzUxYjgzOTRjNiIsIm5hbWUiOiJMdWlzIEZlcm5hbmRvIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTY5OTU1ODk1N30.SV_aCeKT1Ve4E5UAvnzjpHgnjvVfESjX12-Ts6khoG4
 Content-Type: application/json
 
 {
@@ -21,8 +21,8 @@ POST http://localhost:3333/user/register
 Content-Type: application/json
 
 {
-  "name": "bruno brinn",
-  "email": "bruno@gmail.com",
+  "name": "Luis munhoz",
+  "email": "Luismunhoz@gmail.com",
   "password": "123"
 }
 

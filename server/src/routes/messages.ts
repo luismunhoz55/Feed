@@ -1,7 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
 import z from "zod";
-import { fastifyJwt } from "@fastify/jwt";
 
 export async function messagesRoutes(app: FastifyInstance) {
   const prisma = new PrismaClient();

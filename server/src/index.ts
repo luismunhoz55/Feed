@@ -8,7 +8,7 @@ const app = fastify();
 
 // Register JWT Authorization
 app.register(jwt, {
-  secret: "fdshjiAIK3489SOHkjbsadf",
+  secret: `${process.env.SECRET_KEY}`,
 });
 
 // Register CORS, so frontend can access backend routes

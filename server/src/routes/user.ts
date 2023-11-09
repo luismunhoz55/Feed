@@ -1,7 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
-import z from "zod";
 import { hash, compare } from "bcryptjs";
+import z from "zod";
 
 export async function userRoutes(app: FastifyInstance) {
   const prisma = new PrismaClient();
@@ -25,7 +25,7 @@ export async function userRoutes(app: FastifyInstance) {
     });
 
     if (verifyExistingUser)
-      return reply.code(401).send("Email already registered");
+      return reply.code(401).send({ message: "Email already registered" });
 
     // Encrypt the password
     const hashedPassword = await hash(password, 8);
@@ -38,15 +38,6 @@ export async function userRoutes(app: FastifyInstance) {
         password: hashedPassword,
       },
     });
-
-    // Create the JWT token and return it
-    const token = app.jwt.sign({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-    });
-
-    return token;
   });
 
   app.post("/user/login", async (request, reply) => {
@@ -78,14 +69,12 @@ export async function userRoutes(app: FastifyInstance) {
         id: user.id,
         name: user.name,
         email: user.email,
-      },
-      {
-        expiresIn: "30 days",
       }
+      // {
+      //   expiresIn: "30 days",
+      // }
     );
 
-    console.log(token);
-
-    return reply.code(200).send("You are logged in!");
+    return token;
   });
 }
