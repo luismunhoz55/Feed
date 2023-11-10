@@ -1,10 +1,14 @@
-import { api } from "@/api";
 import { FormEvent } from "react";
-import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { useAuth } from "@/hooks/Auth";
+import { useNavigate } from "react-router-dom";
+
+interface SignIn {
+  signIn?: Function;
+}
 
 export function Login() {
-  const [cookies, setCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
+  const { signIn }: SignIn = useAuth();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -15,16 +19,12 @@ export function Login() {
     const password = formData.get("password");
 
     try {
-      const response = await api.post("user/login", {
-        email,
-        password,
-      });
-
-      const token = response.data;
-
-      const cookieExpiresInSeconds = 60 * 60 * 24 * 30;
-
-      setCookie("token", token, { path: "/", maxAge: cookieExpiresInSeconds });
+      if (signIn) {
+        await signIn({
+          email,
+          password,
+        });
+      }
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -33,7 +33,7 @@ export function Login() {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center ">
+    <div className="w-full h-screen flex flex-col gap-5 items-center justify-center ">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 items-center py-5 px-10  bg-slate-800 border-slate-600 rounded-lg"
@@ -59,6 +59,13 @@ export function Login() {
           value="Fazer login"
         />
       </form>
+
+      <button
+        onClick={() => navigate("/signup")}
+        className="text-white bg-slate-600 hover:bg-slate-700 rounded-lg px-5 py-2 transition-colors font-bold cursor-pointer"
+      >
+        Fazer cadastro
+      </button>
     </div>
   );
 }

@@ -23,7 +23,7 @@ export function Signup() {
 
       if (user) alert("Okay!");
 
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message);
@@ -32,7 +32,7 @@ export function Signup() {
   }
 
   return (
-    <div className="w-full h-screen flex items-center justify-center ">
+    <div className="w-full h-screen flex flex-col gap-5 items-center justify-center ">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 items-center py-5 px-10  bg-slate-800 border-slate-600 rounded-lg"
@@ -65,6 +65,12 @@ export function Signup() {
           value="Cadastrar"
         />
       </form>
+      <button
+        onClick={() => navigate("/")}
+        className="text-white bg-slate-600 hover:bg-slate-700 rounded-lg px-5 py-2 transition-colors font-bold cursor-pointer"
+      >
+        Fazer Login
+      </button>
     </div>
   );
 }

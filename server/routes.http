@@ -36,3 +36,14 @@ Content-Type: application/json
   "email": "luis@gmail.com",
   "password": "123"
 }
+
+###
+
+# @name user_data
+get http://localhost:3333/user/data 
+Content-Type: application/json
+
+{
+  "token": "oi"
+}
+

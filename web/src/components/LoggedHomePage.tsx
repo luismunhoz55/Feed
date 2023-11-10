@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { CreateMessage } from "../components/CreateMessage";
+import { CreateMessage } from "./CreateMessage";
 import { api } from "@/api";
-import { Messages } from "../components/Messages";
-import { useCookies } from "react-cookie";
-import { Profile } from "@/components/Profile";
+import { Messages } from "./Messages";
 
 interface Message {
   id: string;
@@ -12,18 +10,12 @@ interface Message {
   created_at: Date;
 }
 
-export function Home() {
+export function HomePage() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [cookie] = useCookies(["token"]);
-  const token = cookie["token"];
 
   useEffect(() => {
     const getMessages = async () => {
-      const response = await api.get("/messages", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.get("/messages");
 
       setMessages(response.data);
     };
@@ -31,9 +23,7 @@ export function Home() {
   }, []);
 
   return (
-    <div className="w-[980px] h-screen mx-auto">
-      <Profile />
-
+    <>
       <CreateMessage />
 
       <h1 className="text-slate-200 font-bold text-4xl mx-5 my-8">Feed</h1>
@@ -47,6 +37,6 @@ export function Home() {
           <Messages key={msg.id} title={msg.title} message={msg.message} />
         ))
       )}
-    </div>
+    </>
   );
 }

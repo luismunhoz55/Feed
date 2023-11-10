@@ -40,6 +40,7 @@ export async function userRoutes(app: FastifyInstance) {
     });
   });
 
+  // Login user route
   app.post("/user/login", async (request, reply) => {
     const userRegisterSchema = z.object({
       email: z.string(),
@@ -75,6 +76,18 @@ export async function userRoutes(app: FastifyInstance) {
       // }
     );
 
-    return token;
+    return { token };
   });
+
+  // User data route
+  // app.get("/user/data", async (request, reply) => {
+  //   // const tokenSchema = z.object({
+  //   //   token: z.string(),
+  //   // });
+
+  //   // const { token } = tokenSchema.parse(request.body);
+
+  //   // return token;
+  //   return request.body;
+  // });
 }

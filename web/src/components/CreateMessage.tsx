@@ -7,8 +7,12 @@ import {
 } from "@/components/ui/dialog";
 import { FormEvent } from "react";
 import { api } from "@/api";
+import { useCookies } from "react-cookie";
 
 export function CreateMessage() {
+  const [cookie] = useCookies(["token"]);
+  const token = cookie["token"];
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
@@ -17,10 +21,18 @@ export function CreateMessage() {
     const title = formData.get("title");
     const message = formData.get("message");
 
-    await api.post("/messages", {
-      title,
-      message,
-    });
+    await api.post(
+      "/messages",
+      {
+        title,
+        message,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     location.reload();
   }
