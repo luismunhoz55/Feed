@@ -1,6 +1,7 @@
 import { api } from "@/api";
 import { FormEvent } from "react";
 import { redirect, useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -21,7 +22,9 @@ export function Signup() {
         password,
       });
 
-      if (user) alert("Okay!");
+      if (user) {
+        toast("Cadastrado!");
+      }
 
       navigate("/");
     } catch (error) {
@@ -33,6 +36,7 @@ export function Signup() {
 
   return (
     <div className="w-full h-screen flex flex-col gap-5 items-center justify-center ">
+      <Toaster />
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 items-center py-5 px-10  bg-slate-800 border-slate-600 rounded-lg"

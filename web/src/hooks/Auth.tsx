@@ -31,6 +31,8 @@ function AuthProvider({ children }: Props) {
       setCookie("token", token, { path: "/", maxAge: cookieExpiresInSeconds });
 
       setLogged(true);
+
+      return true
     } catch (error) {
       if (error instanceof Error) {
         alert(error);
