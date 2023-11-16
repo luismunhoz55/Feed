@@ -1,6 +1,6 @@
 import { api } from "@/api";
 import { FormEvent } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 
 export function Signup() {

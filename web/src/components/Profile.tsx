@@ -1,5 +1,4 @@
 import { useAuth } from "@/hooks/Auth";
-import { api } from "@/api";
 
 interface SignOut {
   signOut?: Function;
