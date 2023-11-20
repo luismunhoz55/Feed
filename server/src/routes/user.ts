@@ -80,14 +80,20 @@ export async function userRoutes(app: FastifyInstance) {
   });
 
   // User data route
-  // app.get("/user/data", async (request, reply) => {
-  //   // const tokenSchema = z.object({
-  //   //   token: z.string(),
-  //   // });
+  app.get("/user/data", async (request, reply) => {
+    await request.jwtVerify();
 
-  //   // const { token } = tokenSchema.parse(request.body);
+    const userId = request.user.id;
 
-  //   // return token;
-  //   return request.body;
-  // });
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    return {
+      name: user?.name,
+      email: user?.email,
+    };
+  });
 }

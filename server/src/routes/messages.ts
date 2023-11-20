@@ -11,6 +11,24 @@ export async function messagesRoutes(app: FastifyInstance) {
 
   app.get("/messages", async (request, reply) => {
     const messages = await prisma.messages.findMany({
+      where: {
+        isPrivate: false,
+      },
+      orderBy: {
+        created_at: "desc",
+      },
+    });
+
+    return messages;
+  });
+
+  app.get("/mymessages", async (request, reply) => {
+    const userId = request.user.id;
+
+    const messages = await prisma.messages.findMany({
+      where: {
+        userId,
+      },
       orderBy: {
         created_at: "desc",
       },
@@ -23,17 +41,29 @@ export async function messagesRoutes(app: FastifyInstance) {
     const createMessageBody = z.object({
       title: z.string(),
       message: z.string(),
+      isPrivate: z.boolean(),
     });
 
-    const { title, message } = createMessageBody.parse(request.body);
+    const { title, message, isPrivate } = createMessageBody.parse(request.body);
 
-    console.log();
+    const userNameRequest = await prisma.user.findUnique({
+      where: {
+        id: request.user.id,
+      },
+      select: {
+        name: true,
+      },
+    });
+
+    const userName = userNameRequest?.name ?? "Default";
 
     const createdMessage = await prisma.messages.create({
       data: {
         title,
         message,
         userId: request.user.id,
+        isPrivate,
+        userName,
       },
     });
 

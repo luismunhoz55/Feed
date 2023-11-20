@@ -16,6 +16,7 @@ interface SigninProps {
 function AuthProvider({ children }: Props) {
   const [cookie, setCookie, removeCookie] = useCookies(["token"]);
   const [logged, setLogged] = useState(cookie["token"]);
+  const [userData, setUserData] = useState({});
 
   async function signIn({ email, password }: SigninProps) {
     try {
@@ -32,7 +33,7 @@ function AuthProvider({ children }: Props) {
 
       setLogged(true);
 
-      return true
+      return true;
     } catch (error) {
       if (error instanceof Error) {
         alert(error);
@@ -46,8 +47,27 @@ function AuthProvider({ children }: Props) {
     setLogged(false);
   }
 
+  async function getUserData() {
+    if (!logged) {
+      return {};
+    }
+
+    const token = cookie["token"];
+
+    const response = await api.get("/user/data", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return {
+      name: response.data.name,
+      email: response.data.email,
+    };
+  }
+
   return (
-    <AuthContext.Provider value={{ signIn, signOut, logged }}>
+    <AuthContext.Provider value={{ signIn, signOut, logged, getUserData }}>
       {children}
     </AuthContext.Provider>
   );

@@ -20,12 +20,16 @@ export function CreateMessage() {
 
     const title = formData.get("title");
     const message = formData.get("message");
+    const isPrivateRequest = formData.get("isPrivate");
+
+    const isPrivate = isPrivateRequest == null ? false : true;
 
     await api.post(
       "/messages",
       {
         title,
         message,
+        isPrivate,
       },
       {
         headers: {
@@ -57,12 +61,18 @@ export function CreateMessage() {
               type="text"
               name="title"
               placeholder="Título:"
+              required
             />
             <textarea
               className="w-full h-40 py-2 px-4 text-black rounded-md break-words resize-none"
               name="message"
               placeholder="Mensagem:"
+              required
             />
+            <div className="flex items-center gap-2">
+              <label htmlFor="isPrivate">Privado:</label>
+              <input className="rounded-lg" type="checkbox" name="isPrivate" />
+            </div>
             <input
               className="text-slate-100 bg-slate-950 rounded-lg px-5 py-2 hover:text-slate-300 transition-colors font-bold cursor-pointer"
               type="submit"

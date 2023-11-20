@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
   "title": "Teste",
-  "message": "Este é um teste"
+  "message": "Este é um teste",
+  "isPrivate": true
 }
 
 ###
@@ -41,9 +42,6 @@ Content-Type: application/json
 
 # @name user_data
 get http://localhost:3333/user/data 
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzZmQyYjQ2LTg2YTktNDQxNi05N2FkLThmZGQ4OWU3ZTZhOCIsIm5hbWUiOiJ3aWxseWFtIHZpYWRvIiwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpYXQiOjE3MDAyMzAwMzJ9.0V9-hJsQw1TXd1KRwgVMwAHz3kRauhulKeT3twThXPE
 
-{
-  "token": "oi"
-}
 

@@ -2,3 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.TabsTrigger[data-state="active"] {
+  background-color: rgb(2 6 23 / var(--tw-bg-opacity)) !important;
+}
+/* 
+.Switch {
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity)) !important;
+} */
+
+/* .Switch[data-state="checked"] {
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity)) !important;
+} */
+
+#private-messages span:first-child {
+  background-color: rgb(2 6 23 / var(--tw-bg-opacity)) !important;
+}

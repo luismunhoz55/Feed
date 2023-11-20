@@ -24,8 +24,10 @@ model Messages {
   id String @id @default(uuid())
   title String
   message String
+  isPrivate Boolean
   created_at DateTime @default(now())
   userId String
+  userName String
 
   user User @relation(fields: [userId], references: [id])
 }

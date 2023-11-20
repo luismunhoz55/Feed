@@ -1,52 +1,40 @@
-import { useEffect, useState } from "react";
 import { CreateMessage } from "../components/CreateMessage";
-import { api } from "@/api";
-import { Messages } from "../components/Messages";
-import { useCookies } from "react-cookie";
 import { Profile } from "@/components/Profile";
-
-interface Message {
-  id: string;
-  title: string;
-  message: string;
-  created_at: Date;
-}
+import { PublicMessages } from "@/components/PublicMessages";
+import { PrivateMessages } from "@/components/PrivateMessages";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function Home() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [cookie] = useCookies(["token"]);
-  const token = cookie["token"];
-
-  useEffect(() => {
-    const getMessages = async () => {
-      const response = await api.get("/messages", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setMessages(response.data);
-    };
-    getMessages();
-  }, []);
-
   return (
     <div className="w-[980px] h-screen mx-auto">
       <Profile />
 
       <CreateMessage />
 
-      <h1 className="text-slate-200 font-bold text-4xl mx-5 my-8">Feed</h1>
+      <h1 className="text-slate-200 font-bold text-4xl mx-5 mt-8 mb-5">Feed</h1>
 
-      {messages.length == 0 ? (
-        <h1 className="text-white text-4xl text-center">
-          Sem mensagens no momento
-        </h1>
-      ) : (
-        messages.map((msg) => (
-          <Messages key={msg.id} title={msg.title} message={msg.message} />
-        ))
-      )}
+      <Tabs defaultValue="public" className="pb-5">
+        <TabsList className="rounded-lg border-solid border-2 border-slate-600 bg-slate-800 text-slate-200 grid w-[400px] p-2 mb-10 h-auto grid-cols-2 mx-auto">
+          <TabsTrigger
+            className="TabsTrigger font-bold transition-colors"
+            value="public"
+          >
+            Public
+          </TabsTrigger>
+          <TabsTrigger
+            className="TabsTrigger font-bold transition-colors"
+            value="mine"
+          >
+            My messages
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="public">
+          <PublicMessages />
+        </TabsContent>
+        <TabsContent value="mine">
+          <PrivateMessages />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
