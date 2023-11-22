@@ -17,6 +17,7 @@
     "axios": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dayjs": "^1.11.10",
     "install": "^0.13.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

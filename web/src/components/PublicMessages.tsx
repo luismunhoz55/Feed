@@ -42,6 +42,7 @@ export function PublicMessages() {
             title={msg.title}
             message={msg.message}
             userName={msg.userName}
+            created_at={msg.created_at}
           />
         ))
       )}

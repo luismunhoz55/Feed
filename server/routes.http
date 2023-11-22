@@ -44,4 +44,9 @@ Content-Type: application/json
 get http://localhost:3333/user/data 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzZmQyYjQ2LTg2YTktNDQxNi05N2FkLThmZGQ4OWU3ZTZhOCIsIm5hbWUiOiJ3aWxseWFtIHZpYWRvIiwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpYXQiOjE3MDAyMzAwMzJ9.0V9-hJsQw1TXd1KRwgVMwAHz3kRauhulKeT3twThXPE
 
+###
+
+# @name delete_message
+DELETE http://localhost:3333/messages/0b63c4b1-6d9c-4935-8570-4d4ff5f8df35
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzYzIxNTFiLTRkNjgtNGIwNS04MzcxLWEzYzUxYjgzOTRjNiIsIm5hbWUiOiJMdWlzIEZlcm5hbmRvIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTcwMDU2ODM0NH0.sBzfsA6QhzNKEN8RfC0AkbbQUYhXYzbwPjlqnVJUk0A
 

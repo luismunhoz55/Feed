@@ -69,4 +69,23 @@ export async function messagesRoutes(app: FastifyInstance) {
 
     return createdMessage ?? "Error";
   });
+
+  app.delete("/messages/:id", async (request, reply) => {
+    const userId = request.user.id;
+
+    const deleteMessageSchema = z.object({
+      id: z.string(),
+    });
+
+    const { id } = deleteMessageSchema.parse(request.params);
+
+    await prisma.messages.delete({
+      where: {
+        id,
+        userId,
+      },
+    });
+
+    return "Ok";
+  });
 }

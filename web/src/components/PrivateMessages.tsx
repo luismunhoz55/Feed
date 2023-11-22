@@ -20,34 +20,6 @@ export function PrivateMessages() {
   const [cookie] = useCookies(["token"]);
   const token = cookie["token"];
 
-  function isPrivateActivated(isPrivate: boolean) {
-    if (isPrivate) {
-      if (privateMessages.length == 0) {
-        return (
-          <h1 className="text-white text-4xl text-center">
-            Você não tem mensagens privadas
-          </h1>
-        );
-      }
-      return privateMessages.map((msg) => (
-        <Messages
-          key={msg.id}
-          title={msg.title}
-          message={msg.message}
-          userName={msg.userName}
-        />
-      ));
-    }
-    return allMessages.map((msg) => (
-      <Messages
-        key={msg.id}
-        title={msg.title}
-        message={msg.message}
-        userName={msg.userName}
-      />
-    ));
-  }
-
   useEffect(() => {
     const getMessages = async () => {
       const response = await api.get("/mymessages", {
@@ -64,6 +36,36 @@ export function PrivateMessages() {
     getMessages();
   }, []);
 
+  function isPrivateActivated(isPrivate: boolean) {
+    if (isPrivate) {
+      if (privateMessages.length == 0) {
+        return (
+          <h1 className="text-white text-4xl text-center mt-10">
+            Você não tem mensagens privadas
+          </h1>
+        );
+      }
+      return privateMessages.map((msg) => (
+        <Messages
+          key={msg.id}
+          title={msg.title}
+          message={msg.message}
+          userName={msg.userName}
+          created_at={msg.created_at}
+        />
+      ));
+    }
+    return allMessages.map((msg) => (
+      <Messages
+        key={msg.id}
+        title={msg.title}
+        message={msg.message}
+        userName={msg.userName}
+        created_at={msg.created_at}
+      />
+    ));
+  }
+
   return (
     <>
       <div className="px-5 flex items-center gap-4">
@@ -77,7 +79,7 @@ export function PrivateMessages() {
         </label>
       </div>
       {allMessages.length == 0 ? (
-        <h1 className="text-white text-4xl text-center">
+        <h1 className="text-white text-4xl text-center mt-10">
           Sem mensagens no momento
         </h1>
       ) : (
