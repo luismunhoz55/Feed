@@ -8,7 +8,7 @@ Se tudo der certo, o site estará rodando, porém sem o backend, então não vai
 Entre na pasta 'server' e digite o seguinte comando:
   npm install
 
-Se você tentar rodar 'npm run dev', não vai funcionar porque estamos sem o banco de dados, então vamos criá-lo. Digite os seguintes comandos: 
+Se você tentar rodar 'npm run dev', não vai funcionar porque estamos sem o banco de dados, então vamos criá-lo. Digite o seguinte comando: 
   npx prisma migrate dev
 
 Com esse comando, dizemos para o banco gerar as tabelas e criar o banco em si, e após isso podemos rodar o comando:
