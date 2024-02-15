@@ -24,7 +24,7 @@ export function Profile() {
   }
 
   return (
-    <div className="flex items-center justify-between text-white py-5 px-10 m-5 rounded-lg border-solid border-2 border-slate-600 bg-slate-800">
+    <div className="flex items-center justify-between text-white py-5 px-10 m-5 rounded-lg glassmorphism">
       <h2 className="text-2xl font-bold">{name}</h2>
       <button
         onClick={handleSignOut}

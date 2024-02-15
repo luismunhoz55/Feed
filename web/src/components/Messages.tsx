@@ -6,10 +6,8 @@ export function Messages(props: {
   userName: string;
   created_at: Date;
 }) {
-  // console.log(props.created_at);
-
   return (
-    <div className="flex flex-col  text-white py-4 px-10 m-5 rounded-lg border-solid border-2 border-slate-600 bg-slate-800 divide-y divide-slate-600">
+    <div className="flex flex-col text-white py-4 px-10 m-5 rounded-lg border-solid border-1 border-slate-600 divide-y divide-slate-600 glassmorphism">
       <div className="flex items-center justify-between">
         <p className="text-sm text-slate-400 pb-2">{props.userName}</p>
 

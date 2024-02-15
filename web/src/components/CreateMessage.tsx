@@ -42,7 +42,7 @@ export function CreateMessage() {
   }
 
   return (
-    <div className="flex justify-between items-center gap-4 py-5 px-10 m-5 mt-6 rounded-lg border-solid border-2 border-slate-600 bg-slate-800">
+    <div className="flex justify-between items-center gap-4 py-5 px-10 m-5 mt-6 rounded-lg glassmorphism">
       <p className="text-white">Crie uma nova mensagem!</p>
       <Dialog>
         <DialogTrigger className="text-slate-100 bg-slate-950 rounded-lg px-5 py-2 hover:text-slate-300 transition-colors font-bold">

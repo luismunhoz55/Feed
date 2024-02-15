@@ -1,4 +1,5 @@
 import { api } from "@/api";
+import { Experience } from "@/components/Experience";
 import { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
@@ -36,10 +37,11 @@ export function Signup() {
 
   return (
     <div className="w-full h-screen flex flex-col gap-5 items-center justify-center ">
+      <Experience />
       <Toaster />
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-5 items-center py-5 px-10  bg-slate-800 border-slate-600 rounded-lg"
+        className="flex flex-col gap-5 items-center py-5 px-8 rounded-lg glassmorphism"
       >
         <h2 className="font-bold text-3xl text-white text-center">Sign up</h2>
         <input

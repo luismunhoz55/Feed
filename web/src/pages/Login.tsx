@@ -2,6 +2,7 @@ import { FormEvent } from "react";
 import { useAuth } from "@/hooks/Auth";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "sonner";
+import { Experience } from "@/components/Experience";
 
 interface SignIn {
   signIn?: Function;
@@ -35,11 +36,12 @@ export function Login() {
 
   return (
     <div className="w-full h-screen">
+      <Experience />
       <Toaster richColors position="bottom-right" />
-      <div className="w-full h-full flex flex-col gap-5 items-center justify-center ">
+      <div className="w-full h-full flex flex-col gap-5 items-center justify-center">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-5 items-center py-5 px-10  bg-slate-800 border-slate-600 rounded-lg"
+          className="flex flex-col gap-5 items-center py-5 px-10 rounded-lg glassmorphism"
         >
           <h2 className="font-bold text-3xl text-white text-center">Login</h2>
           <input
