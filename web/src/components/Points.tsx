@@ -16,16 +16,14 @@ export function Points() {
     height: window.innerHeight,
   });
 
-  const [cursor, setCursor] = useState({
+  const cursor = {
     x: 0,
     y: 0,
-  });
+  };
 
   window.addEventListener("mousemove", (e) => {
-    setCursor({
-      x: e.clientX / sizes.width - 0.5,
-      y: e.clientY / sizes.height - 0.5,
-    });
+    cursor.x = e.clientX / sizes.width - 0.5;
+    cursor.y = e.clientY / sizes.height - 0.5;
   });
 
   const starsCount = 1000 * 3;
