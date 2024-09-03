@@ -1,52 +1,57 @@
+# @name Healthcheck
+GET http://localhost:3000/
+
+###
+
 # @name get_messages
-GET http://localhost:3333/messages
+GET http://localhost:3000/messages
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzYzIxNTFiLTRkNjgtNGIwNS04MzcxLWEzYzUxYjgzOTRjNiIsIm5hbWUiOiJMdWlzIEZlcm5hbmRvIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTY5OTU1ODk1N30.SV_aCeKT1Ve4E5UAvnzjpHgnjvVfESjX12-Ts6khoG4
 
 ###
 
 # @name create_message
-POST http://localhost:3333/messages
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzYzIxNTFiLTRkNjgtNGIwNS04MzcxLWEzYzUxYjgzOTRjNiIsIm5hbWUiOiJMdWlzIEZlcm5hbmRvIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTY5OTU1ODk1N30.SV_aCeKT1Ve4E5UAvnzjpHgnjvVfESjX12-Ts6khoG4
+POST http://localhost:3000/messages
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQxYTdlYzlkLWZhYTktNGU4ZC05OWJjLTc1ZTVhZjhiOTg1MyIsImVtYWlsIjoiTHVpc211bmhvenpAZ21haWwuY29tIiwibmFtZSI6Ikx1aXMgbXVuaG96IiwiaWF0IjoxNzI1MzczNzAzfQ.W7HtK036wM3tjPt3qhBVfjvgOET_sLxVCc2i5xjnmkQ
 Content-Type: application/json
 
 {
-  "title": "Teste",
-  "message": "Este é um teste",
-  "isPrivate": true
+  "title": "HAHAHAHA",
+  "message": "HAHAHAH",
+  "isPrivate": false
 }
 
 ###
 
 # @name create_user
-POST http://localhost:3333/user/register
+POST http://localhost:3000/user/register
 Content-Type: application/json
 
 {
   "name": "Luis munhoz",
-  "email": "Luismunhoz@gmail.com",
+  "email": "Luismunhozz@gmail.com",
   "password": "123"
 }
 
 ###
 
 # @name user_login
-POST http://localhost:3333/user/login
+POST http://localhost:3000/user/login
 Content-Type: application/json
 
 {
-  "email": "luis@gmail.com",
+  "email": "Luismunhozz@gmail.com",
   "password": "123"
 }
 
 ###
 
 # @name user_data
-get http://localhost:3333/user/data 
+GET http://localhost:3000/user/data 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzZmQyYjQ2LTg2YTktNDQxNi05N2FkLThmZGQ4OWU3ZTZhOCIsIm5hbWUiOiJ3aWxseWFtIHZpYWRvIiwiZW1haWwiOiJ3aWxseUBnbWFpbC5jb20iLCJpYXQiOjE3MDAyMzAwMzJ9.0V9-hJsQw1TXd1KRwgVMwAHz3kRauhulKeT3twThXPE
 
 ###
 
 # @name delete_message
-DELETE http://localhost:3333/messages/0b63c4b1-6d9c-4935-8570-4d4ff5f8df35
+DELETE http://localhost:3000/messages/59c6ed03-e9ea-43c2-95e7-5a2335acaf9c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgzYzIxNTFiLTRkNjgtNGIwNS04MzcxLWEzYzUxYjgzOTRjNiIsIm5hbWUiOiJMdWlzIEZlcm5hbmRvIiwiZW1haWwiOiJsdWlzQGdtYWlsLmNvbSIsImlhdCI6MTcwMDU2ODM0NH0.sBzfsA6QhzNKEN8RfC0AkbbQUYhXYzbwPjlqnVJUk0A
 

@@ -2,20 +2,13 @@ import { FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
 import { hash, compare } from "bcryptjs";
 import z from "zod";
+import { registerSchema } from "../lib/schemas";
 
 export async function userRoutes(app: FastifyInstance) {
   const prisma = new PrismaClient();
 
-  // Register user route
   app.post("/user/register", async (request, reply) => {
-    const userRegisterSchema = z.object({
-      name: z.string(),
-      email: z.string(),
-      password: z.string(),
-    });
-
-    // Use zod to verify if the data is correct
-    const { name, email, password } = userRegisterSchema.parse(request.body);
+    const { name, email, password } = registerSchema.parse(request.body);
 
     // verify if the email already exist in database
     const verifyExistingUser = await prisma.user.findUnique({

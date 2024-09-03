@@ -1,6 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
 import z from "zod";
+import { createMessageSchema } from "../lib/schemas";
 
 export async function messagesRoutes(app: FastifyInstance) {
   const prisma = new PrismaClient();
@@ -38,13 +39,9 @@ export async function messagesRoutes(app: FastifyInstance) {
   });
 
   app.post("/messages", async (request, reply) => {
-    const createMessageBody = z.object({
-      title: z.string(),
-      message: z.string(),
-      isPrivate: z.boolean(),
-    });
-
-    const { title, message, isPrivate } = createMessageBody.parse(request.body);
+    const { title, message, isPrivate } = createMessageSchema.parse(
+      request.body
+    );
 
     const userNameRequest = await prisma.user.findUnique({
       where: {

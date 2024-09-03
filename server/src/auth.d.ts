@@ -1,12 +1,13 @@
-import "@fastify/jwt";
+import { userJWT } from "./lib/interfaces";
 
-// Standardizing the data sent to the token
-declare module "@fastify/jwt" {
-  export interface FastifyJWT {
-    user: {
-      id: string;
-      name: string;
-      email: string;
-    };
+declare global {
+  namespace Express {
+    interface Request {
+      user: {
+        id: string;
+        name: string;
+        email: string;
+      };
+    }
   }
 }

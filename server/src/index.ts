@@ -1,30 +1,30 @@
-import fastify from "fastify";
-import cors from "@fastify/cors";
-import jwt from "@fastify/jwt";
-import { userRoutes } from "./routes/user";
-import { messagesRoutes } from "./routes/messages";
+import express, { Request, Response } from "express";
+import cors from "cors";
+import router from "./routes/routes";
+const { expressjwt } = require("express-jwt");
 
-const app = fastify();
+const app = express();
+const PORT = 3000;
 
-// Register JWT Authorization
-app.register(jwt, {
-  secret: `${process.env.SECRET_KEY}`,
-});
+// Configurar CORS para permitir acesso do frontend
+app.use(cors({ origin: true }));
 
-// Register CORS, so frontend can access backend routes
-app.register(cors, {
-  origin: true,
-});
+app.use(express.json());
 
-// Register all routes
-app.register(userRoutes);
-app.register(messagesRoutes);
-
-// Configure fastify
-app
-  .listen({
-    port: 3333,
+app.use(
+  expressjwt({ secret: process.env.SECRET_KEY, algorithms: ["HS256"] }).unless({
+    path: ["/", "/user/register", "/user/login"],
   })
-  .then(() => {
-    console.log("Server rodando em localhost:3333 🐱‍🐉");
-  });
+);
+
+// Registrar todas as rotas
+app.get("/", (req: Request, res: Response) => {
+  res.send("api-feed! 🐱‍🐉");
+});
+
+app.use("/", router);
+
+// Iniciar o servidor
+app.listen(PORT, () => {
+  console.log(`Server rodando em localhost:${PORT} 🐱‍🐉`);
+});
